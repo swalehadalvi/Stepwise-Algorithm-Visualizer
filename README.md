@@ -46,13 +46,10 @@ Add a generator to `sorting.js` or `pathfinding.js`, then register it in that fi
 ![Homepage](Screenshot%202026-11-03%20072458.png)
 
 ### Sorting Visualization
-![Sorting](Screenshot%202026-11-03%20072425.png)
+![Sorting](Screenshot%202026-11-03%20072547.png)
 
 ### Pathfinding
 ![Pathfinding](Screenshot%202026-11-03%20072324.png)
-
-### Pathfinding Result
-![Pathfinding Result](Screenshot%202026-11-03%20072547.png)
 
 ### Additional View
 ![Additional View](Screenshot%202026-11-03%20072617.png)
