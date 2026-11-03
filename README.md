@@ -36,10 +36,6 @@ It is a static site, so any static host works. Upload the whole folder (or the z
 | `explain.js` | Plain-English "what happened and why" text for every step |
 | `app.js` | Animation loop, controls and drawing on the grid |
 
-## Make it yours
-
-In `index.html`, replace `Your Name` in the About section (and the `YN` initials in the avatar) with your own name.
-
 ## Adding an algorithm
 
 Add a generator to `sorting.js` or `pathfinding.js`, then register it in that file's `algorithms` object with a `name`, `tag`, `blurb`, `facts` and `run`. It appears in the sidebar and on the Home page automatically. Add matching explanation text in `explain.js` so each step says why it happens.
