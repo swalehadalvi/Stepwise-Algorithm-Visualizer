@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Stepwise – Algorithm Visualizer</title>
+  <meta name="description" content="Watch sorting and pathfinding algorithms run step by step, with a plain-English reason for every move.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%233355FF'/%3E%3Crect x='6' y='17' width='5' height='9' rx='1.5' fill='white'/%3E%3Crect x='13.5' y='11' width='5' height='15' rx='1.5' fill='white'/%3E%3Crect x='21' y='6' width='5' height='20' rx='1.5' fill='white'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Figtree:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <a class="brand" href="#home" data-go="home" aria-label="Stepwise home">
+      <svg width="28" height="28" viewBox="0 0 32 32" aria-hidden="true">
+        <rect width="32" height="32" rx="8" fill="#3355FF"/>
+        <rect x="6" y="17" width="5" height="9" rx="1.5" fill="#fff"/>
+        <rect x="13.5" y="11" width="5" height="15" rx="1.5" fill="#fff"/>
+        <rect x="21" y="6" width="5" height="20" rx="1.5" fill="#fff"/>
+      </svg>
+      <span>Stepwise</span>
+    </a>
+    <nav class="tabs" aria-label="Main">
+      <button class="tab" type="button" data-go="home" aria-selected="true">Home</button>
+      <button class="tab" type="button" data-go="sorting" aria-selected="false">Sorting</button>
+      <button class="tab" type="button" data-go="pathfinding" aria-selected="false">Pathfinding</button>
+      <button class="tab" type="button" data-go="about" aria-selected="false">About</button>
+    </nav>
+  </header>
+
+  <!-- ===================== HOME ===================== -->
+  <div id="home">
+    <section class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Interactive algorithm visualizer</p>
+        <h1>See how algorithms think.</h1>
+        <p class="lead">Pick an algorithm, then step through it one move at a time. Every step comes with a plain-English reason for <em>why</em> it happens. Type in your own numbers or draw your own maze.</p>
+        <div class="hero-cta">
+          <button class="btn primary big" type="button" data-go="sorting">Start with sorting</button>
+          <button class="btn big" type="button" data-go="pathfinding">Try pathfinding</button>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <span style="--h:35%;--d:0s"></span><span style="--h:62%;--d:.15s"></span><span style="--h:48%;--d:.3s"></span>
+        <span style="--h:85%;--d:.45s"></span><span style="--h:28%;--d:.6s"></span><span style="--h:72%;--d:.75s"></span>
+        <span style="--h:55%;--d:.9s"></span><span style="--h:95%;--d:1.05s"></span><span style="--h:42%;--d:1.2s"></span>
+        <span style="--h:68%;--d:1.35s"></span>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">How it works</h2>
+      <div class="how">
+        <div class="how-card"><b>1</b><h3>Pick an algorithm</h3><p>Choose any card below. The visualizer opens with that algorithm ready to go.</p></div>
+        <div class="how-card"><b>2</b><h3>Go step by step</h3><p>Press <em>Next step</em> to move one action at a time, or <em>Play</em> to watch it run. <em>Back</em> rewinds.</p></div>
+        <div class="how-card"><b>3</b><h3>Understand why</h3><p>Under the animation, each step says what happened and why the algorithm chose to do it.</p></div>
+        <div class="how-card"><b>4</b><h3>Make it yours</h3><p>Enter your own numbers to sort, or draw walls and move the start and end on the grid.</p></div>
+      </div>
+    </section>
+
+    <section class="section" id="algos">
+      <h2 class="section-title">Choose an algorithm</h2>
+      <h3 class="group">Sorting</h3>
+      <div id="homeSorting" class="cards"></div>
+      <h3 class="group">Pathfinding</h3>
+      <div id="homePath" class="cards"></div>
+    </section>
+
+    <section class="section about-us" id="aboutUs">
+      <h2 class="section-title">About us</h2>
+      <div class="about-grid">
+        <div class="avatar" aria-hidden="true">SW</div>
+        <div>
+          <p class="about-lead">Hi, I'm <strong class="you">Swaleha Dalvi</strong>, the creator of Stepwise.</p>
+          <p>I built Stepwise because algorithms are easier to understand when you can watch them think. Textbooks show the final answer. Stepwise shows every comparison, swap and decision along the way, and explains the reasoning behind it.</p>
+          <p>It is a small, free project written in plain HTML, CSS and JavaScript, made for students, curious beginners and anyone preparing for an interview.</p>
+          <ul class="about-points">
+            <li>10 algorithms: 6 sorting and 4 pathfinding</li>
+            <li>Step forward and back, with a reason for every move</li>
+            <li>Bring your own data: custom numbers and hand-drawn mazes</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- ===================== VISUALIZER ===================== -->
+  <div id="visualizer" hidden>
+    <section class="intro">
+      <h1 id="heading">Sorting, one comparison at a time.</h1>
+      <p id="sub">Pick an algorithm, press play, and watch every comparison and swap.</p>
+    </section>
+
+    <main class="layout">
+      <section class="stage" aria-label="Visualizer">
+        <div class="toolbar">
+          <button id="playBtn" class="btn primary" type="button">Play</button>
+          <button id="resetBtn" class="btn" type="button">Shuffle</button>
+          <button id="mazeBtn" class="btn" type="button" hidden>Random walls</button>
+          <button id="clearBtn" class="btn" type="button" hidden>Clear board</button>
+          <div id="tools" class="tools" role="group" aria-label="Drawing tool" hidden>
+            <button class="tool" type="button" data-tool="wall" aria-pressed="true">Wall</button>
+            <button class="tool" type="button" data-tool="weight" aria-pressed="false">Weight</button>
+            <button class="tool" type="button" data-tool="erase" aria-pressed="false">Erase</button>
+          </div>
+          <div class="sliders">
+            <label class="slider">
+              <span>Speed</span>
+              <input id="speed" type="range" min="1" max="100" value="55">
+            </label>
+            <label class="slider">
+              <span>Size <output id="sizeOut" for="size"></output></span>
+              <input id="size" type="range" min="10" max="100" value="40">
+            </label>
+          </div>
+        </div>
+
+        <form id="customForm" class="custom" autocomplete="off">
+          <label for="customInput">Your own numbers</label>
+          <div class="custom-row">
+            <input id="customInput" type="text" inputmode="decimal" placeholder="e.g. 8, 3, 15, 1, 9, 4">
+            <button class="btn" type="submit">Use my numbers</button>
+          </div>
+          <p id="customMsg" class="msg" role="status">Enter 2 to 40 positive numbers separated by commas or spaces.</p>
+        </form>
+        <p id="pathHint" class="msg" hidden>Click or drag on the grid to draw. Drag the green start dot and the red end dot to move them.</p>
+
+        <div id="viz" class="viz" role="img" aria-label="Algorithm visualization"></div>
+
+        <div id="legend" class="legend"></div>
+
+        <section class="explain" aria-labelledby="exTitle">
+          <div class="explain-head">
+            <h2 id="exTitle">What's happening</h2>
+            <div class="stepper">
+              <button id="backBtn" class="btn" type="button">← Back</button>
+              <span id="stepNo" class="step-no">Step 0</span>
+              <button id="nextBtn" class="btn primary" type="button">Next step →</button>
+            </div>
+          </div>
+          <p id="stepWhat" class="what" aria-live="polite"></p>
+          <p class="why"><b>Why?</b> <span id="stepWhy"></span></p>
+          <p class="kbd">Tip: use the ← and → arrow keys to step.</p>
+        </section>
+
+        <dl id="stats" class="stats" aria-live="off"></dl>
+      </section>
+
+      <aside class="side">
+        <h2 class="side-title">Algorithms</h2>
+        <div id="algoList" class="algo-list"></div>
+        <div id="about" class="about"></div>
+      </aside>
+    </main>
+  </div>
+
+  <footer class="foot">
+    <p>Plain HTML, CSS and JavaScript. No build step, no dependencies.</p>
+  </footer>
+
+  <script src="sorting.js"></script>
+  <script src="pathfinding.js"></script>
+  <script src="explain.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
